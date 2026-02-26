@@ -56,4 +56,19 @@ describe('SQLiteAdapter', () => {
     expect(stats.timeSeries.monthly).toHaveLength(1)
     expect(stats.timeSeries.monthly[0].month).toBe('2026-02')
   })
+
+  it('filters by from timestamp', async () => {
+    await adapter.record('GPTBot', '/', 1000)
+    await adapter.record('GPTBot', '/', 2000)
+    const stats = await adapter.query({ from: 1500 })
+    expect(stats.total).toBe(1)
+  })
+
+  it('filters by from and to timestamp', async () => {
+    await adapter.record('GPTBot', '/', 1000)
+    await adapter.record('GPTBot', '/', 2000)
+    await adapter.record('GPTBot', '/', 3000)
+    const stats = await adapter.query({ from: 1500, to: 2500 })
+    expect(stats.total).toBe(1)
+  })
 })

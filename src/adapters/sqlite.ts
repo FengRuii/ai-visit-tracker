@@ -41,11 +41,11 @@ export class SQLiteAdapter extends BaseAdapter {
     // to avoid TypeScript errors when params is empty.
     const execGet = <T>(sql: string): T => {
       const stmt = this.db.prepare(sql)
-      return (params.length > 0 ? stmt.get(...params as [number]) : stmt.get()) as T
+      return (params.length > 0 ? stmt.get(...params as [number, ...number[]]) : stmt.get()) as T
     }
     const execAll = <T>(sql: string): T[] => {
       const stmt = this.db.prepare(sql)
-      return (params.length > 0 ? stmt.all(...params as [number]) : stmt.all()) as T[]
+      return (params.length > 0 ? stmt.all(...params as [number, ...number[]]) : stmt.all()) as T[]
     }
 
     const { count: total } = execGet<{ count: number }>(
