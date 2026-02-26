@@ -32,10 +32,10 @@
   "keywords": ["express", "middleware", "ai", "bot", "analytics", "user-agent", "tracking"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ai-visit-tracker/ai-visit-tracker"
+    "url": "https://github.com/FengRuii/ai-visit-tracker"
   },
-  "homepage": "https://github.com/ai-visit-tracker/ai-visit-tracker#readme",
+  "homepage": "https://github.com/FengRuii/ai-visit-tracker#readme",
   "bugs": {
-    "url": "https://github.com/ai-visit-tracker/ai-visit-tracker/issues"
+    "url": "https://github.com/FengRuii/ai-visit-tracker/issues"
   }
 }
