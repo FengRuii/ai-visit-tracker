@@ -10,6 +10,8 @@
     "test:watch": "vitest"
   },
   "license": "MIT",
+  "files": ["dist", "agents.json"],
+  "engines": { "node": ">=18.0.0" },
   "dependencies": {
     "better-sqlite3": "^11.0.0"
   },
