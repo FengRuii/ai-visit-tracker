@@ -18,4 +18,11 @@ describe('getStats', () => {
     expect(stats.total).toBe(1)
     expect(stats.agents['GPTBot']).toBe(1)
   })
+
+  it('passes QueryOptions to the adapter', async () => {
+    await adapter.record('GPTBot', '/', 1000)
+    await adapter.record('GPTBot', '/', 2000)
+    const stats = await getStats({ from: 1500 })
+    expect(stats.total).toBe(1)
+  })
 })

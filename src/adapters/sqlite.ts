@@ -66,6 +66,8 @@ export class SQLiteAdapter extends BaseAdapter {
       GROUP BY date ORDER BY date
     `)
 
+    // Note: SQLite %W assigns week "00" to days before the first Sunday of the year.
+    // This means early-January data may appear under e.g. "2026-W00" rather than ISO week 1.
     const weekly = execAll<{ week: string; count: number }>(`
       SELECT strftime('%Y-W%W', datetime(timestamp, 'unixepoch')) as week,
              COUNT(*) as count

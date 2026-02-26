@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build && npm test"
   },
   "license": "MIT",
   "files": ["dist", "agents.json"],
@@ -27,5 +28,14 @@
   },
   "peerDependencies": {
     "express": ">=4.0.0"
+  },
+  "keywords": ["express", "middleware", "ai", "bot", "analytics", "user-agent", "tracking"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ai-visit-tracker/ai-visit-tracker"
+  },
+  "homepage": "https://github.com/ai-visit-tracker/ai-visit-tracker#readme",
+  "bugs": {
+    "url": "https://github.com/ai-visit-tracker/ai-visit-tracker/issues"
   }
 }
