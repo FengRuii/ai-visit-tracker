@@ -1,0 +1,16 @@
+{
+  "GPTBot": ["GPTBot"],
+  "ClaudeBot": ["ClaudeBot", "Claude-User"],
+  "PerplexityBot": ["PerplexityBot"],
+  "Applebot": ["Applebot"],
+  "Googlebot": ["Googlebot"],
+  "bingbot": ["bingbot"],
+  "DuckDuckBot": ["DuckDuckBot"],
+  "Bytespider": ["Bytespider"],
+  "CCBot": ["CCBot"],
+  "FacebookBot": ["FacebookBot"],
+  "Diffbot": ["Diffbot"],
+  "Amazonbot": ["Amazonbot"],
+  "anthropic-ai": ["anthropic-ai"],
+  "cohere-ai": ["cohere-ai"]
+}
