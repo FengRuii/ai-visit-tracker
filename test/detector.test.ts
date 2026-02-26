@@ -25,4 +25,16 @@ describe('detectAgent', () => {
   it('detects partial match anywhere in the UA string', () => {
     expect(detectAgent('Mozilla/5.0 (compatible; GPTBot/1.0; +https://openai.com/gptbot)')).toBe('GPTBot')
   })
+
+  it('returns null for an empty string user agent', () => {
+    expect(detectAgent('')).toBeNull()
+  })
+
+  it('detects Claude-User UA as ClaudeBot', () => {
+    expect(detectAgent('Claude-User/1.0')).toBe('ClaudeBot')
+  })
+
+  it('detects bingbot', () => {
+    expect(detectAgent('Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)')).toBe('bingbot')
+  })
 })
