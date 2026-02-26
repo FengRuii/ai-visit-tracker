@@ -35,11 +35,11 @@ export function aiVisitTracker(options: MiddlewareOptions = {}) {
 
   router.use((req, _res, next) => {
     if (!exclude.includes(req.path)) {
-      const agent = detectAgent(req.headers['user-agent'] as string | undefined)
+      const agent = detectAgent(req.headers['user-agent'])
       if (agent) {
         adapter
           .record(agent, req.path, Math.floor(Date.now() / 1000))
-          .catch(() => { /* swallow record errors; never affect the response */ })
+          .catch(() => { /* intentionally silent — record errors must never affect the HTTP response */ })
       }
     }
     next()

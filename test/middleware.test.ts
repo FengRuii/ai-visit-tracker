@@ -37,7 +37,7 @@ describe('aiVisitTracker middleware', () => {
     const { app, adapter } = makeApp()
     await request(app).get('/hello').set('User-Agent', 'GPTBot/1.0')
     // Give the fire-and-forget record() a tick to complete
-    await new Promise(r => setTimeout(r, 20))
+    await Promise.resolve()
     const stats = await adapter.query()
     expect(stats.total).toBe(1)
     expect(stats.agents['GPTBot']).toBe(1)
@@ -53,7 +53,7 @@ describe('aiVisitTracker middleware', () => {
   it('respects the exclude list', async () => {
     const { app, adapter } = makeApp({ exclude: ['/hello'] })
     await request(app).get('/hello').set('User-Agent', 'GPTBot/1.0')
-    await new Promise(r => setTimeout(r, 20))
+    await Promise.resolve()
     const stats = await adapter.query()
     expect(stats.total).toBe(0)
   })
@@ -68,5 +68,14 @@ describe('aiVisitTracker middleware', () => {
     const { app } = makeApp({ endpoint: '/custom-stats' })
     const res = await request(app).get('/ai-visits')
     expect(res.status).toBe(404)
+  })
+
+  it('getStats() returns data from the same adapter', async () => {
+    const { adapter } = makeApp()
+    await adapter.record('GPTBot', '/', Math.floor(Date.now() / 1000))
+    await Promise.resolve()
+    const { getStats } = await import('../src/query')
+    const stats = await getStats()
+    expect(stats.total).toBe(1)
   })
 })
