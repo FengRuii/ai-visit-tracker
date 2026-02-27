@@ -1,5 +1,7 @@
 {
   "GPTBot": ["GPTBot"],
+  "ChatGPT-User": ["ChatGPT-User"],
+  "OAI-SearchBot": ["OAI-SearchBot"],
   "ClaudeBot": ["ClaudeBot", "Claude-User"],
   "PerplexityBot": ["PerplexityBot"],
   "Applebot": ["Applebot"],
